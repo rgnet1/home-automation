@@ -109,12 +109,13 @@ for line in queue:
             print(ansi_escape.sub(b'',tidal.after).decode("utf-8"))
             print("Waiting for you to register....")
             # sttart interactie mode
-            tidal.interact()
+            # tidal.interact()
         if x == 2:
             print("Error: timeout\n")
     except pexpect.EOF:
         print("EOF error")
-
+        print(tidal.before)
+        print(tidal.after)
     except pexpect.TIMEOUT:
         print("Timeout Error")
         print(tidal.before)

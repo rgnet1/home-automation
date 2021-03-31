@@ -1,15 +1,14 @@
 #!/usr/bin/python3
 
+print("Content-type: text/html")
+print("\n")
+
 import cgi, cgitb
 import os
 import subprocess
 
-
-print("Content-type: text/html")
-print("\n")
-print("<html>")
-print('This cgi script written by python.\n')
-print("</html>")
+def bash_command(cmd):
+    subprocess.Popen(['/bin/bash', '-c', cmd]).wait()
 
 form = cgi.FieldStorage()
 
@@ -20,11 +19,8 @@ if "textcontent" not in form:
     f.close()
 
 else:
-    print("<p>link:", form["textcontent"].value)
+    # print("<p>link:", form["textcontent"].value)
     f = open("/production/www/cgi-bin/links.txt", "w+")
     f.write(form["textcontent"].value)
     f.close()
-
-    print("Running sub process")
-    # os.system("python3 tidaldl.py")
-    subprocess.call("python3 tidaldl.py", shell=True)
+    bash_command("python3 tidaldl.py")

@@ -1,41 +1,31 @@
-# Docker(Ubuntu20.04) for cgi with python(2.7/3.6/3.7/3.8/3.9)
+# tidal-dl Docker Wrapper
 
-This is a simple python web server settings.  
-With this docker image, you can create simple web application with cgi.  
+This is a simple python web server that allows you to run tidal-dl from a web
+page.  
 
 ## How to use
 
 ```bash
 # build image
-docker build -t pycgi .
+docker build -t rgnet1/tidal-dl .
 # run image
-HASH=`docker run -p 8883:80 -d pycgi`
-# exec container
-docker exec -it $HASH /bin/bash
+docker run -p 8885:80 --name tidal-dl -d rgnet1/tidal-dl
+```
+
+## First time use
+First time use requires you to enter the container, and link tidal to your account:
+
+```bash
+docker exec -it  /bin/bash
+
 ```
 
 You can Access from the below URL after run docker container.  
 
-* Shell Script ... [http://localhost:8883/cgi-bin2/sh.cgi](http://localhost:8883/cgi-bin2/sh.cgi)
-* Python2.7 ... [http://localhost:8883/cgi-bin2/py27.cgi](http://localhost:8883/cgi-bin2/py27.cgi)
-* Python3.6 ... [http://localhost:8883/cgi-bin2/py36.cgi](http://localhost:8883/cgi-bin2/py36.cgi)
-* Python3.7 ... [http://localhost:8883/cgi-bin2/py37.cgi](http://localhost:8883/cgi-bin2/py37.cgi)
-* Python3.8 ... [http://localhost:8883/cgi-bin2/py38.cgi](http://localhost:8883/cgi-bin2/py38.cgi)
-* Python3.9 ... [http://localhost:8883/cgi-bin2/py39.cgi](http://localhost:8883/cgi-bin2/py39.cgi)
+* http://localhost:8885](http://localhost:8885)
 
-## Allow Python version
-
-* 2.7
-* 3.6
-* 3.7
-* 3.8
-* 3.9
 
 ### References
 
-* [Usage of docker with apache2](https://www.dockerbook.com/code/6/jekyll/apache/Dockerfile)
-* [【Linux】Rubyで書いたCGIをApacheで動かしてみる](http://note.kurodigi.com/apache-cgi/)(Japanese)
-
-### Licence
-
-* [MIT](https://github.com/pyohei/docker-cgi-python/blob/master/LICENSE)
+* [Usage of docker with apache2 and python](https://github.com/pyohei/docker-cgi-python)
+* [Tidal-dl] (https://github.com/yaronzz/Tidal-Media-Downloader)
