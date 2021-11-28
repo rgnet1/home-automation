@@ -13,7 +13,7 @@ services:
       - TZ=US/Pacific
       - SERVERURL=unraid-ramzey.duckdns.org #optional
       - SERVERPORT=51821 #optional
-      - PEERS=3 #optional
+      - PEERS=xps13,pixel6pro,guest #optional
       - PEERDNS=192.168.2.12, 8.8.8.8 #optional
       - INTERNAL_SUBNET=10.13.13.0 #optional
       - ALLOWEDIPS=0.0.0.0/0 #optional
