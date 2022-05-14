@@ -11,17 +11,16 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=US/Pacific
-      - SERVERURL=unraid-ramzey.duckdns.org #optional
-      - SERVERPORT=51821 #optional
-      - PEERS=xps13,pixel6pro,guest #optional
-      - PEERDNS=192.168.2.12, 8.8.8.8 #optional
-      - INTERNAL_SUBNET=10.13.13.0 #optional
-      - ALLOWEDIPS=0.0.0.0/0 #optional
+      - SERVERURL=unraid-ramzey.duckdns.org # optional
+      - PEERS=xps13,pixel6pro,guest,sebastopol # optional
+      - PEERDNS=192.168.2.12, 8.8.8.8 # optional
+      - INTERNAL_SUBNET=10.13.13.0 # optional
+      - ALLOWEDIPS=0.0.0.0/0 # optional
     volumes:
       - ~/containers/wireguardvpn/config:/config
       - /lib/modules:/lib/modules
     ports:
-      - 51821:51820/udp
+      - 3128:51820/udp
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
     restart: unless-stopped
